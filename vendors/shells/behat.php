@@ -19,7 +19,7 @@ class BehatShell extends Shell {
             array_shift($args);
         } while($args[0] != 'behat');
         // Load default config
-        if(!in_array($args, '--config') && !in_array($args, '-c')) {
+        if(!in_array('--config', $args) && !in_array('-c', $args)) {
             array_push($args, '--config', __DIR__ . DS . 'behat.yml');
         }
 
