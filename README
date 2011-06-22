@@ -1,0 +1,116 @@
+h1. CakeBehat is shell for testing CakePHP Application by Behat
+
+Copyright(c) 2011 Sizuhiko. Licensed under the MIT license.
+
+h2. Overview
+
+Behat is PHP version clone of famous BDD framework cucumber in Ruby on Rails. 
+The advantage are followings:
+* Customer are able to read & understand because the scenarios written by the natural language
+* Scenario is executable as test !
+
+The test of a current CakePHP application
+1. SimpleTest in the unit test
+2. Selenium might have been used in the test of the browser base. 
+And, it became possible to be doing the acceptance test (In customer's word) by Behat/Mink in the future. 
+
+However, Behat is Symfony base, and, up to now, the plug-in etc. to execute the application of CakePHP have not been prepared.
+
+Then, the shell task of executing it by "cake behat" like "rake cucumber" was made. 
+It is "CakeBehat" shell.
+
+h2. Usage
+
+h3. Require
+
+* PHPUnit
+* CakePHP 1.3 or later
+* The data base such as MySQL must be installed, and the data base for the test must be prepared. 
+* PHP 5.3.1 or later
+
+h3. Install
+
+Under the vendors directory of CakePHP, execute the following commands. 
+
+<pre><code>
+git clone git@github.com:sizuhiko/CakeBehat.git
+git clone git://github.com/Behat/Behat.git && cd Behat
+git submodule update --init
+cd ..
+git clone git://github.com/Behat/Mink.git && cd Mink
+git submodule update --init
+</code></pre>
+
+Then, three directories of CakeBehat, Behat, and Mink might be made under the vendors. 
+
+Next, the following commands are executed. 
+<pre><code>
+cp CakeBehat/vendors/shells/behat.php shells
+cp CakeBehat/vendors/shells/behat.yml.default shells/behat.yml
+cp -R CakeBehat/features ..
+</code></pre>
+
+The initial install is an end.
+
+h3. Configuration
+
+Setting your application root url into behat.yml.
+<pre><code>
+vendors/behat.yml
+
+start_url: http://test.localhost:8888/application-name/
+</code></pre>
+
+This specifies the host name, the port number, and the application name, etc. by the one to set passing the route of the application. Setting it to the host name that can be identified to the test environment as much as possible is recommended. 
+
+h4. Do you end by this?
+
+A basic environmental setting ends by this. Behat is an executable situation.
+
+h3. Your application database settings.
+
+An initial value of config/database.php is $default. 
+When UnitTest is executed, $test might already been defined. 
+Behat/Mink is executed by the browser access. Data base ($test) for the test cannot access to without the change in the setting.
+
+When test step registers the test data, CakeBehat uses $test. Therefore, the definition is needed without fail. My recommendation is that the data base setting is switched by the environment like "Easy peasy database config" of Bakery. 
+http://bakery.cakephp.org/articles/joelmoss/2006/11/16/easy-peasy-database-config
+
+In sample application (sample) of the inclusion, it switch based on the accessed server name.
+When the accessed host name is test.localhost, the data base for test is used. 
+When it is not so, the data base for development is used.
+It will become possible to use test.localhost if it set  "127.0.0.1 localhost and test.localhost" into the hosts file. It is easy. 
+
+h3. How to insert test data
+
+CakeBehat has two methods that can be used with the step file. 
+
+* truncateModel() : Method for deletion of test data. 
+* getModel() Method of getting model to register test data. 
+
+<pre><code>
+$steps->Given('/^there is a post:$/', function($world, $table) {
+  $hash = $table->getHash();
+  $world->truncateModel('Post');
+  $post = $world->getModel('Post');
+  foreach ($hash as $row) {
+	$post->create(array('Post'=>array('title'=>$row['Title'], 'body'=>$row['Body'])));
+	$post->save();
+  }
+});
+</code></pre>
+
+h3. Let's execute it. 
+
+Move to the directory including cake, app, and vendors, and next, execute the following commands. 
+@cake/console/cake behat
+
+You can use any of behat options.
+Please check 
+@cake behat --help
+
+h2. Sample code
+
+Under the sample directory.
+It include English and Japanese
+
