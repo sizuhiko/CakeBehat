@@ -1,21 +1,23 @@
-# language: ja
-フィーチャ: ブログの記事を閲覧したい
-	なぜならブログの記事を閲覧することで、最新の情報を入手したいからだ
+# language: en
+Feature: 
+  In order to tell the masses what's on my mind
+  As a user
+  I want to read articles on the site
 
-	背景:
-    前提 ブログ記事に以下の内容が登録されていること:
-      | タイトル | 本文 |
-      | タイトル | これは、記事の本文です。 |
-      | またタイトル | そこに本文が続きます。 |
-      | Title strikes back | こりゃ本当にわくわくする！うそ。 |
+  Background:
+    Given there is a post:
+      | Title | Body |
+      | The title | This is the post body. |
+      | A title once again | And the post body follows. |
+      | Title strikes back | This is really exciting! Not. |
 
-  シナリオ: 記事一覧を閲覧できること
-    前提 トップページ を表示している
-    ならば "タイトル" と表示されていること
-    かつ "またタイトル" と表示されていること
-    かつ "Title strikes back" と表示されていること
+  Scenario: Show articles
+    When I am on TopPage
+    Then I should see "The title"
+    And  I should see "A title once again"
+    And  I should see "Title strikes back"
 
-  シナリオ: 記事の本文を閲覧できること
-    前提 トップページ を表示している
-    かつ "またタイトル" のリンク先へ移動する
-    ならば "そこに本文が続きます" と表示されていること
+  Scenario: Show the article
+    Given I am on TopPage
+    When  I follow "A title once again"
+    Then  I should see "And the post body follows."
