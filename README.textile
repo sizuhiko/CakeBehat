@@ -27,6 +27,7 @@ h3. Require
 * CakePHP 1.3 or later
 * The data base such as MySQL must be installed, and the data base for the test must be prepared. 
 * PHP 5.3.1 or later
+* Behat 2.x and Mink
 
 h3. Install
 
@@ -37,14 +38,16 @@ git clone git@github.com:sizuhiko/CakeBehat.git
 git clone git://github.com/Behat/Behat.git && cd Behat
 git submodule update --init
 cd ..
-git clone git://github.com/Behat/Mink.git && cd Mink
-git submodule update --init
+wget https://github.com/downloads/Behat/Mink/mink.phar
 </code></pre>
 
 Then, three directories of CakeBehat, Behat, and Mink might be made under the vendors. 
 
-Next, the following commands are executed. 
+Next, the following commands are executed. (on vendors directory of CakePHP)
 <pre><code>
+ls
+  Behat  Mink  mink.phar  shells
+
 cp CakeBehat/vendors/shells/behat.php shells
 cp CakeBehat/vendors/shells/behat.yml.default shells/behat.yml
 cp -R CakeBehat/features ..
@@ -58,7 +61,7 @@ Setting your application root url into behat.yml.
 <pre><code>
 vendors/behat.yml
 
-start_url: http://test.localhost:8888/application-name/
+base_url: http://test.localhost:8888/application-name/
 </code></pre>
 
 This specifies the host name, the port number, and the application name, etc. by the one to set passing the route of the application. Setting it to the host name that can be identified to the test environment as much as possible is recommended. 

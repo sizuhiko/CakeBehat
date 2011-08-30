@@ -12,12 +12,12 @@ Feature:
       | Title strikes back | This is really exciting! Not. |
 
   Scenario: Show articles
-    When I am on TopPage
+    When I am on "TopPage"
     Then I should see "The title"
     And  I should see "A title once again"
     And  I should see "Title strikes back"
 
   Scenario: Show the article
-    Given I am on TopPage
+    Given I am on "TopPage"
     When  I follow "A title once again"
     Then  I should see "And the post body follows."

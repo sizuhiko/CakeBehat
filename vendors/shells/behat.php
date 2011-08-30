@@ -1,12 +1,11 @@
 <?php
 
 define('BEHAT_ROOT', VENDORS . 'Behat' . DS);
-define('MINK_ROOT', VENDORS . 'Mink' . DS);
 define('BEHAT_PHP_BIN_PATH',    '/usr/bin/env php');
 define('BEHAT_BIN_PATH',        BEHAT_ROOT . 'bin/behat.php');
 define('BEHAT_VERSION',         'DEV');
 require_once BEHAT_ROOT . 'autoload.php.dist';
-require_once MINK_ROOT . 'autoload.php';
+require_once VENDORS . 'mink.phar';
 
 class BehatShell extends Shell {
     
@@ -72,18 +71,4 @@ class BehatShell extends Shell {
 		ClassRegistry::config(array('ds' => 'test_suite'));
 	}
     
-}
-
-class CakeBehatEnvironment extends Behat\Mink\Integration\MinkEnvironment
-{
-    function getModel($name) {
-        $model = ClassRegistry::init(array('class' => $name, 'ds' => 'test'));
-        return $model;
-    }
-    function truncateModel($name) {
-        $model = ClassRegistry::init(array('class' => $name, 'ds' => 'test'));
-        $table = $model->table;
-        $db = ConnectionManager::getDataSource('test_suite');
-        $db->truncate($table);
-    }
 }
