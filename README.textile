@@ -41,12 +41,12 @@ cd ..
 wget https://github.com/downloads/Behat/Mink/mink.phar
 </code></pre>
 
-Then, three directories of CakeBehat, Behat, and Mink might be made under the vendors. 
+Then, two directories of CakeBehat, Behat, and mink.phar might be made under the vendors. 
 
 Next, the following commands are executed. (on vendors directory of CakePHP)
 <pre><code>
 ls
-  Behat  Mink  mink.phar  shells
+  Behat  CakeBehat  mink.phar  shells
 
 cp CakeBehat/vendors/shells/behat.php shells
 cp CakeBehat/vendors/shells/behat.yml.default shells/behat.yml
