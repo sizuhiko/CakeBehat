@@ -36,7 +36,6 @@ Under the plugins directory of CakePHP root, execute the following commands.
 <pre><code>
 cd plugins
 git clone git@github.com:sizuhiko/CakeBehat.git
-git checkout 2.0
 cd ..
 </code></pre>
 
