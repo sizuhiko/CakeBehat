@@ -27,7 +27,7 @@ h3. Require
 * CakePHP 2.0 or later
 * The data base such as MySQL must be installed, and the data base for the test must be prepared. 
 * PHP 5.3.2 or later
-* Behat 2.x and Mink
+* Behat 2.1.x and Mink
 
 h3. Install
 

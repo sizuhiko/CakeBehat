@@ -12,7 +12,6 @@ class FeatureContext extends MinkContext implements ClosuredContextInterface
     public $parameters = array();
 
     public function __construct(array $parameters) {
-        parent::__construct($parameters);
         $this->parameters = $parameters;
 
         if (file_exists(__DIR__ . '/../support/env.php')) {
