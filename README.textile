@@ -105,12 +105,12 @@ $steps->Given('/^there is a post:$/', function($world, $table) {
 
 h3. Let's execute it. 
 
-Move to the directory including cake, app, and vendors, and next, execute the following commands. 
-@cake/console/cake CakeBehat.bdd@
+Move to the directory including lib, app, and plugins, and next, execute the following commands. 
+@lib/Cake/Console/cake CakeBehat.bdd@
 
 You can use any of behat options.
 Please check 
-@cake/console/cake CakeBehat.bdd --help@
+@lib/Cake/Console/cake CakeBehat.bdd --help@
 
 The command operates only by the directory that includes app, cake, and vendors, etc.
 Please note it.
