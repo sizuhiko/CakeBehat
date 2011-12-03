@@ -112,7 +112,7 @@ You can use any of behat options.
 Please check 
 @lib/Cake/Console/cake CakeBehat.bdd --help@
 
-The command operates only by the directory that includes app, cake, and vendors, etc.
+The command operates only by the directory that includes app, lib, plugins and vendors, etc.
 Please note it.
 
 h2. Sample code
