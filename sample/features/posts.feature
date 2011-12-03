@@ -21,3 +21,10 @@ Feature:
     Given I am on "TopPage"
     When  I follow "A title once again"
     Then  I should see "And the post body follows."
+
+  @javascript
+  Scenario: Remove article
+    Given I am on "TopPage"
+    And   I should see "Title strikes back"
+    When  I follow "Delete3"
+    Then  I should not see "Title strikes back"
