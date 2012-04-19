@@ -5,7 +5,7 @@ define('BEHAT_PHP_BIN_PATH',    '/usr/bin/env php');
 // define('BEHAT_BIN_PATH',        BEHAT_ROOT . 'bin/behat.php');
 define('BEHAT_VERSION',         'DEV');
 require_once 'phar://'.dirname(__FILE__).'/behat-2.1.3.phar/autoload.php';
-require_once 'mink.phar';
+require_once 'mink-1.2.0.phar';
 
 App::uses('Model', 'Model');
 App::uses('ClassRegistry', 'Utility');
