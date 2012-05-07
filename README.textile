@@ -55,6 +55,15 @@ lib/Cake/Console/cake CakeBehat.init
 
 The initial install is an end.
 
+h3. Update
+
+Update command is only update dependency libs(behat, mink).
+Not overwrite features, steps and configuration file.
+Next, the following commands are executed. (on root of CakePHP)
+<pre><code>
+lib/Cake/Console/cake CakeBehat.update
+</code></pre>
+
 h3. Configuration
 
 Setting your application root url into behat.yml.

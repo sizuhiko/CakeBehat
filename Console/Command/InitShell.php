@@ -4,12 +4,11 @@ App::uses('Folder', 'Utility');
 App::uses('File', 'Utility');
 
 class InitShell extends Shell {
+    public $tasks = array('CakeBehat.Download');
     
     public function main() {
-        $this->out("downloading behat.phar...");
-        $this->download("https://github.com/downloads/Behat/Behat/behat-2.1.3.phar");
-        $this->out("downloading mink.phar...");
-        $this->download("https://github.com/downloads/Behat/Mink/mink-1.2.0.phar");
+        $this->Download->behat();
+        $this->Download->mink();
 
         $Folder = new Folder(dirname(dirname(dirname(__FILE__))) . DS . "features");
         $this->out("copy ".$Folder->pwd()." to Cake Root...");

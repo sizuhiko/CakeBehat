@@ -4,8 +4,13 @@
 define('BEHAT_PHP_BIN_PATH',    '/usr/bin/env php');
 // define('BEHAT_BIN_PATH',        BEHAT_ROOT . 'bin/behat.php');
 define('BEHAT_VERSION',         'DEV');
-require_once 'phar://'.dirname(__FILE__).'/behat-2.1.3.phar/autoload.php';
-require_once 'mink-1.2.0.phar';
+define('CAKEBEHAT_ROOT',         dirname(__FILE__));
+Phar::loadPhar (dirname(__FILE__).'/behat-2.4.0beta1.phar');
+Phar::loadPhar (dirname(__FILE__).'/mink.phar');
+require_once 'phar://'.dirname(__FILE__).'/behat-2.4.0beta1.phar/vendor/.composer/autoload.php';
+require_once 'phar://'.dirname(__FILE__).'/mink.phar/vendor/.composer/autoload.php';
+#require_once 'phar://'.dirname(__FILE__).'/behat-2.1.3.phar/autoload.php';
+#require_once 'mink-1.2.0.phar';
 
 App::uses('Model', 'Model');
 App::uses('ClassRegistry', 'Utility');
