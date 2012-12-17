@@ -1,6 +1,0 @@
-default:
-  context:
-    parameters:
-      javascript_session:   selenium
-      base_url:             http://test.localhost:8888/application-name/
-      show_cmd:             open %s
